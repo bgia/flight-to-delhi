@@ -1,0 +1,159 @@
+### Test Case ###
+
+Maximum time available: 3 hours
+There are two exercises, we recommend saving about a third of the time for the
+second exercise. Have some time management in mind, perfection is not required, better 
+make sure you can deliver some results. A clean and commented coding style is a plus.
+Feel free to explain your reasoning by writing comments in the code.
+An efficiency-oriented code is also highly appreciated. 
+You can code in any programming language, with the following preference rank on our side:
+1. R or Python
+2. MATLAB or Octave
+3. Any other scripting language (Julia, ...)
+4. Any other common language
+Once you are done, send your code and data in a zipped folder 'first-name_last-name' to bgia@swiss.com,
+with subfolders for the 2 tasks. The email time stamp counts as your finishing time.
+
+##########################################
+### Exercise 1:                          #
+##########################################
+
+# Description:
+	The goal of this exercise is to derive a model predicting demand for a given 
+	route in an airline's network. You are provided with a data file 'data.csv', 
+	which will form the basis of your analysis. It includes data for the 
+	connection Zurich-Delhi. Note, that a flight is sold for a certain amount of 
+	time, i.e., every selling day before the flight departs, you can get 
+	bookings in. As such, each observation in the dataset is a selling day for a 
+	specific flight (identified by departure time and departure date), i.e., a single flight has multiple observations in the data
+	set as it is sold over multiple days.
+	
+	
+# Tasks:
+	1.	Perform some data cleansing to bring it into a more usable state. Mind in particular potential errors in the data.
+	2.	Identify relevant drivers of demand and derive a suitable prediction model.
+			
+	The data set contains flights within a 2 years departure date range. You can divide it in training and testing subsets,
+	the way you see fitting best. Keep in mind that your model's performance will be evaluated on a test set (not provided)
+	containing flights departing after the last departure date of the provided dataset. 
+	
+	
+# Remarks and hints:
+	-	Definition of data-columns:
+		•	direction – flight direction
+		•	point_of_origin – start of passenger journey (country code)
+		•	dep_date – departure date of flight
+		•	selling_date – date when passenger purchased the ticket
+		•	dep_time – departure time (local time)
+		•	cost – average cost for sold tickets
+		•	margin – airlines margin on sold tickets
+		•	bookings – counts the number of sold tickets
+		
+	- Hints:
+		•	There are no other price components than the one given (no taxes or so). 
+			Values are in local currency (according to point_of_origin).
+		• The point_of_origin is a proxy for the home country of a passenger, so 
+			where he is originally from. As such, on a given flight, passengers with 
+			various point_of_origin can be found.
+
+	- Data:
+		•	Separated by “,”
+		•	Decimal points as “.”
+
+
+##########################################
+### Exercise 2:                          #
+##########################################
+
+# Description:
+	After developing an improvement of the pricing system, we want to compare its performances against the currently running system.
+	For that, we plan a live test of this new functionality, during which this new feature is activated at random on each of the routes.
+	More in detail, there are 3 possible status among which we should switch: SUPERVISED (the new function is controlled by a human),
+	AUTO (the new function runs on its own), OFF (the new function is deactivated – serving as a control group).
+    The live test happens while these new pricing strategies are generated. 
+	Each route gets a new pricing strategy each month on a designated day from 1st to 25th. 
+	So there are 25 batches of routes. In the provided file routes.csv, the pricing strategies generation day (GEN_DAY) is reported for each route.
+	
+	
+# Tasks:
+	Generate a random test plan starting on 2021-10-01 with 3 test phases (OFF, AUTO, SUPERVISED) that is compliant with the technical constraints provided in the next section.
+	Each route has to be tested for 3 months, i.e. it has to complete 3 full test cycles. You should provide the results as:
+	
+	1.	A “test calendar” plot for the human users (choose your own clear presentation style).
+	2.	A csv file containing the instruction for the pricing controller machine. 
+	
+	Example of possible results are provided in the attachments (schedule_example.png, instruction_example.csv).
+	Regarding the pricing controller instruction, each route (ROUTE column)	is mentioned every day of the test
+	(TEST_DAY, DATE columns), together with its cyclic generation date (GEN_DAY) and phase active on that day
+	(ON) as a reference, and a column for each switching task (TO_OFF, TO_AUTO, TO_SUPERVISED).
+	Those task should be marked as FALSE if not to be performed, to TRUE if the route changes its phase on the next day 
+	(e.g. if the route today is in AUTO, and has to switch to OFF tomorrow, in today’s row for this route the column TO_OFF should be TRUE. 
+	If another route on SUPERVISED is staying SUPERVISED tomorrow, all the TO_x columns are FALSE)
+	
+	Technical constraints:
+	•	Each route starts its live test on its GEN_DAY in the month of October.
+	•	Each route must have 5 SUPERVISED days at the beginning of each cycle for the human user to check the new strategy
+	•	Each route must have one SUPERVISED day at the end of the cycle, and one SUPERVISED day 2 days before the end of the 
+		cycle to comply with the instruction transmission latencies at the cycle restart.
+	•	The 3 phases should have an equal number of testing days across the cycle. To compensate for the 5-days SUPERVISED
+		period at the beginning of each cycle, some days of those can be randomly excluded from statistical comparison 
+		(and marked as SUPERVISED_EXCLUDED in the schedule). 
+	•	The quality of the schedule is high if the duration of each phase is as uniformly distributed as possible
+		across the cycles and routes (i.e. switches should occur with no fixed periodicity). 
+		
+	In other words, the sequence should be as random as possible, but still comply with those rules.
+
+
+	
+Good luck and have fun!
+
+Florian and Giacomo
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
