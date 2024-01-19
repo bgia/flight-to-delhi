@@ -89,7 +89,7 @@ with subfolders for the 2 tasks. The email time stamp counts as your finishing t
 	
 	
 # Tasks:
-	Generate a random test plan starting on 2021-10-01 with 3 test phases (OFF, AUTO, SUPERVISED)
+	Generate a random test plan starting on 2024-02-01 with 3 test phases (OFF, AUTO, SUPERVISED)
 	that is compliant with the technical constraints provided in the next section.
 	Each route has to be tested for 3 months, i.e. it has to complete 3 full test cycles. You should provide the results as:
 	
@@ -106,7 +106,7 @@ with subfolders for the 2 tasks. The email time stamp counts as your finishing t
 	If a route is keeping its phase - e.g. SUPERVISED today -> SUPERVISED tomorrow - all today's TO_x columns are FALSE)
 	
 	Technical constraints:
-	•	Each route starts its live test on its GEN_DAY in the month of October.
+	•	Each route starts its live test on its GEN_DAY in the month of February.
 	•	Each route must have 5 SUPERVISED days at the beginning of each cycle for the human user to check the new strategy
 	•	Each route must have one SUPERVISED day at the end of the cycle, and one SUPERVISED day 2 days before the end of the 
 		cycle to comply with the instruction transmission latencies at the cycle restart.
