@@ -86,7 +86,8 @@ The prices normally charged for reserving one of those seats, are respectively 3
 -	  500'000 EL
 
 To study the price sensitivity of our customers for this ancillary product, and then find the optimal price, we decide to change daily, starting from 
-2024-03-01 and for a whole year, the prices of the seat reservation and observe how demand for this ancillary product changes accordingly. For technical limitations, we can only have one price per selling day per seat category, that will be offered to all the customers requesting this ancillary product on that day. For example, we cannot differentiate per route, number of passengers on the reservation, or any other feature specific to the single booking at hand.
+2024-03-01 and for a whole year, the prices of the seat reservation and observe how demand for this ancillary product changes accordingly. For technical limitations, we can only have one price per selling day per seat category, that will be offered to all the customers requesting this ancillary product on that day. 
+For example, we cannot differentiate per route, number of passengers on the reservation, or any other feature specific to the single booking at hand.
 The goal is to learn an optimal pricing policy for this product, that differentiates as much as possible, along the relevant dimensions, the offered price.
 You are now asked to help designing the experiment and to generate the exploration sequence of prices.
 
