@@ -93,7 +93,7 @@ You are now asked to help designing the experiment and to generate the explorati
 
 # Tasks
 1. Identify and discuss the factors influencing the price sensitivity for this ancillary product.
-2. Discuss what properties, also in relation to the previous point, the exploration price sequence needs to have to maximize our chances to learn from the 	experiment a differentiated pricing policy for this ancillary product.
+2. Discuss what properties, also in relation to the previous point, the exploration price sequence needs to have to maximize our chances to learn from the experiment a differentiated pricing policy for this ancillary product.
 3. Implement an algorithm to generate the random price sequence. Export the result in a .csv file having as columns DATE, PRICE_ST, PRICE_PZ, PRICE_EL, and as rows the date (YYYY-MM-DD) and the prices (integer) for the 3 seat categories for each of the days of the test.
 4. Plot a “test calendar” for the human analysts to have a compact overview of the test (choose your own clear presentation style).
 5. Discuss and estimate roughly the expected cost of the testing. You can assume an exponential Price-Demand relation. 
