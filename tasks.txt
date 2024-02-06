@@ -78,51 +78,41 @@ with subfolders for the 2 tasks. The email time stamp counts as your finishing t
 ### Exercise 2:                          #
 ##########################################
 
-# Description:
-	After developing an improvement of the pricing system, we want to compare its performance against the currently running system.
-	For that, we plan a live test of this new functionality, during which this new feature is activated at random on each of the routes.
-	More in detail, there are 3 possible states among which we should switch: SUPERVISED (the new function is controlled by a human),
-	AUTO (the new function runs on its own), OFF (the new function is deactivated – serving as a control group). 
-	During the live test, each route gets a new pricing strategy once a month, on a fixed generation day (GEN_DAY) ranging from 1st to 25th. 
-	So there are 25 batches of routes, one batch for each day. 
-	In the provided file routes.csv, the pricing strategies' generation day (GEN_DAY) is reported for each route.
-	
-	
-# Tasks:
-	Generate a random test plan starting on 2024-02-01 with 3 test phases (OFF, AUTO, SUPERVISED)
-	that is compliant with the technical constraints provided in the next section.
-	Each route has to be tested for 3 months, i.e. it has to complete 3 full test cycles. You should provide the results as:
-	
-	1.	A “test calendar” plot for the human users (choose your own clear presentation style).
-	2.	A csv file containing the instruction for the pricing controller machine. 
-	
-	Example of possible results are provided in the attachments (schedule_example.png, instruction_example.csv).
-	Regarding the pricing controller instruction, each route (ROUTE column)	is mentioned every day of the test
-	(TEST_DAY, DATE columns), together with its monthly generation date (GEN_DAY) and phase active on that day
-	(ON) as a reference, and a column for each switching task (TO_OFF, TO_AUTO, TO_SUPERVISED).
-	Those 3 task columns should be marked as FALSE if they are not to be performed, 
-	and marked as TRUE if the route changes to this phase on the next day
-	(e.g. if today the route is in AUTO, and has to switch to OFF tomorrow, then in today’s row this route's column TO_OFF should be TRUE. 
-	If a route is keeping its phase - e.g. SUPERVISED today -> SUPERVISED tomorrow - all today's TO_x columns are FALSE)
-	
-	Technical constraints:
-	•	Each route starts its live test on its GEN_DAY in the month of February.
-	•	Each route must have 5 SUPERVISED days at the beginning of each cycle for the human user to check the new strategy
-	•	Each route must have one SUPERVISED day at the end of the cycle, and one SUPERVISED day 2 days before the end of the 
-		cycle to comply with the instruction transmission latencies at the cycle restart.
-	•	The 3 phases should have an equal number of testing days across the cycle. To compensate for the 5-days SUPERVISED
-		period at the beginning of each cycle, some days of those can be randomly excluded from statistical comparison 
-		(and marked as SUPERVISED_EXCLUDED in the schedule). 
-	•	The quality of the schedule is high if the duration of each phase is as uniformly distributed as possible
-		across the cycles and routes (i.e. switches should occur with no fixed periodicity). 
-		
-	In other words, the sequence should be as random as possible, but still comply with those rules.
+# Description
+The Economy Class cabin in our B777 has three categories of seats: Standard (ST), Preferred Zone (PZ) and Extra Legroom (EL).
+The prices normally charged for reserving one of those seats, are respectively 39, 61, 110 €, to be paid on top of the travel fare. As a reference, last year we sold at those prices the following amount of seat reservations:
+-	2'000'000 ST
+-	  800'000 PZ
+-	  500'000 EL
+
+To study the price sensitivity of our customers for this ancillary product, and then find the optimal price, we decide to change daily, starting from 
+2024-03-01 and for a whole year, the prices of the seat reservation and observe how demand for this ancillary product changes accordingly. For technical limitations, we can only have one price per selling day per seat category, that will be offered to all the customers requesting this ancillary product on that day. For example, we cannot differentiate per route, number of passengers on the reservation, or any other feature specific to the single booking at hand.
+The goal is to learn an optimal pricing policy for this product, that differentiates as much as possible, along the relevant dimensions, the offered price.
+You are now asked to help designing the experiment and to generate the exploration sequence of prices.
+
+# Tasks
+1. Identify and discuss the factors influencing the price sensitivity for this ancillary product.
+2. Discuss what properties, also in relation to the previous point, the exploration price sequence needs to have to maximize our chances to learn from the 	experiment a differentiated pricing policy for this ancillary product.
+3. Implement an algorithm to generate the random price sequence. Export the result in a .csv file having as columns DATE, PRICE_ST, PRICE_PZ, PRICE_EL, and as rows the date (YYYY-MM-DD) and the prices (integer) for the 3 seat categories for each of the days of the test.
+4. Plot a “test calendar” for the human analysts to have a compact overview of the test (choose your own clear presentation style).
+5. Discuss and estimate roughly the expected cost of the testing. You can assume an exponential Price-Demand relation. 
+
+# Constraints
+-	The exploration range for each of the seat type should be between 0.5 and 1.5 of each of the current prices (rounded).
+-	The prices to be charged can only be integers (i.e. max price resolution = 1€).
+-	To maintain coherency of our offer, on each test day the upsell between the three seat types can be reduced up to a minimum of 25% of the current 	ones. For example, the difference between ST and PZ must be throughout the test and each day, greater or equal than 0.25*(61-39) = 5.5€.
+
+The sequence should be as random as possible across all the relevant dimensions, but still comply with those rules.
+
+# Evaluation
+-	Your sequence will be passed to a demand simulator, providing for each simulated customer the purchase result (no seat reservation, ST, PZ, EL).
+-	This simulated dataset will be passed to a regression algorithm. 
+-	The identified model parameters will be compared to the simulator ones: the better the test sequence is designed, the lower the estimation error 	will be.
 
 
-	
+
 Good luck and have fun!
-
-Florian and Giacomo
+Giacomo
 
 	                    |
 			    |
@@ -134,52 +124,3 @@ ________________________'  '-'  '_________________________
 ''''''-|---|--/    \==][^',_m_,'^][==/    \--|---|-''''''
 	      \    /  ||/   H   \||  \    /
 	       '--'   OO   O|O   OO   '--'
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
