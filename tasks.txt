@@ -101,7 +101,7 @@ You are now asked to help designing the experiment and to generate the explorati
 # Constraints
 -	The exploration range for each of the seat type should be between 0.5 and 1.5 of each of the current prices (rounded).
 -	The prices to be charged can only be integers (i.e. max price resolution = 1€).
--	To maintain coherency of our offer, on each test day the upsell between the three seat types can be reduced up to a minimum of 25% of the current 	ones. For example, the difference between ST and PZ must be throughout the test and each day, greater or equal than 0.25*(61-39) = 5.5€.
+-	To maintain coherency of our offer, on each test day the upsell between the three seat types can be reduced up to a minimum of 25% of the current ones. For example, the difference between ST and PZ must be throughout the test and each day, greater or equal than 0.25*(61-39) = 5.5€.
 
 The sequence should be as random as possible across all the relevant dimensions, but still comply with those rules.
 
