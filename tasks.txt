@@ -108,7 +108,7 @@ The sequence should be as random as possible across all the relevant dimensions,
 # Evaluation
 -	Your sequence will be passed to a demand simulator, providing for each simulated customer the purchase result (no seat reservation, ST, PZ, EL).
 -	This simulated dataset will be passed to a regression algorithm. 
--	The identified model parameters will be compared to the simulator ones: the better the test sequence is designed, the lower the estimation error 	will be.
+-	The identified model parameters will be compared to the simulator ones: the better the test sequence is designed, the lower the estimation error will be.
 
 
 
