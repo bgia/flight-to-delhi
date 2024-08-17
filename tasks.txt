@@ -58,8 +58,8 @@ with subfolders for the 2 tasks. The email time stamp counts as your finishing t
 		•	dep_date – departure date of flight
 		•	selling_date – date when passenger purchased the ticket
 		•	dep_time – departure time (local time)
-		•	cost – average cost for sold tickets
-		•	margin – airlines margin on sold tickets
+		•	cost – average cost of the seat (hint: those are not production costs)
+		•	margin – airline's margin on sold tickets
 		•	bookings – counts the number of sold tickets
 		
 	- Hints:
